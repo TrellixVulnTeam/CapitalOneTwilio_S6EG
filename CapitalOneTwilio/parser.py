@@ -7,13 +7,8 @@ with open('training.json', 'r') as fp:
 def preprocess(message):
     message = message.lower()
     return message
-    
-test = [("I want to talk to an agent.", 'call'),
-        ("Transfer $65 from Checking to Savings", 'transfer'),
-        ("Find ATMs near me", 'find'),
-        ("What's my checking balance?", 'check')]
 
-for line in test:
-    line = preprocess(line)
-    print(cl.classify(line[0]))
+def classify(message):
+    message = preprocess(message)
+    cl.classify(message)
 
