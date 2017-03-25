@@ -29,9 +29,6 @@ ACTIONS
             In [x]
             Near [x]
 
-    Deposit [x]
-        Check
-
     Call [x]
         Representative
         Agent
