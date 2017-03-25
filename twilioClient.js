@@ -1,8 +1,8 @@
 /**
  * Created by ashwin on 3/25/17.
  */
-var config = require('./config');
-var client = require('twilio')(config.accountSid, config.authToken);
+const config = require('./config');
+const client = require('twilio')(config.accountSid, config.authToken);
 
 module.exports.sendSms = function (to, message) {
     client.messages.create({

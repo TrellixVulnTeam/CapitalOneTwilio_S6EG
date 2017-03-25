@@ -1,15 +1,17 @@
 /**
  * Created by ashwin on 3/25/17.
  */
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const config = require('./config');
+const twilio = require('twilio')(config.accountSid, config.authToken);
+const twil = require('./twilioClient');
+const natural = require('natural');
+const nessie = require('nessie-nodejs-sdk');
 
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-var config = require('./config');
-var twilio = require('twilio')(config.accountSid, config.authToken);
-var twil = require('./twilioClient');
-var natural = require('natural')
-
+// Set up Nessie
+nessie.setApiKey(config.apiKey);
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}));
@@ -32,4 +34,6 @@ app.post('/send', (req, res) => {
 
 app.listen(3000, () => {
     console.log(`App Running on port ${app.get('port')}`);
+    console.log(nessie.account.getAll()._multipart.body);
 });
+
