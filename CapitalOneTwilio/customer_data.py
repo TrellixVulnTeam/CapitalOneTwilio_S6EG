@@ -1,14 +1,21 @@
-from firebase import firebase
+import pyrebase
 import requests
 import json
 
 cap_url = 'http://api.reimaginebanking.com/customers?key=553d42f5192db2a972b9478ce912075a'
 fire_url = 'https://mhacks9-7440d.firebaseio.com'
 
-firebase = firebase.FirebaseApplication(fire_url, authentication=None)
-auth = firebase.Authentication('AIzaSyDJZDg3h4DOYc1sS4_zyr2u8QKkAgDnqkA', 'nckalil@umich.edu' , extra={'id': 123})
-firebase.authentication = auth
-print(auth.extra)
+config = {
+  'apiKey': 'AIzaSyDJZDg3h4DOYc1sS4_zyr2u8QKkAgDnqkA',
+  'authDomain': ' mhacks9-7440d.firebase.com',
+  'databaseURL': 'https://mhacks9-7440d.firebaseio.com',
+  'storageBucket': 'mhacks9-7440d.appspot.com'
+}
+
+firebase = pyrebase.initialize_app(config)
+db = firebase.database()
+
+print(firebase.database_url)
 
 
 example_person = {
