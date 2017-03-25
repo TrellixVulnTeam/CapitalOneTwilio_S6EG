@@ -8,6 +8,8 @@ var bodyParser = require('body-parser');
 var config = require('./config');
 var twilio = require('twilio')(config.accountSid, config.authToken);
 var twil = require('./twilioClient');
+var natural = require('natural')
+
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}));
@@ -31,4 +33,3 @@ app.post('/send', (req, res) => {
 app.listen(3000, () => {
     console.log(`App Running on port ${app.get('port')}`);
 });
-
