@@ -1,0 +1,52 @@
+ACTIONS
+
+    Check (What is/are my) [x]
+        [x] Balance
+            Checking
+            Savings
+            Custom
+        Recent [x]
+            Transactions
+            Alerts
+
+    Transfer (Send) [x]
+        $X From [x]
+            Checking
+            Savings
+            Custom
+        To [x]
+            Checking
+            Savings
+            Custom
+
+     Find (Where are) [x]
+        ATMS [x]
+            Nearby
+            In [x]
+            Near [x]
+        Locations [x]
+            Nearby
+            In [x]
+            Near [x]
+
+    Deposit [x]
+        Check
+
+    Call [x]
+        Representative
+        Agent
+        Support
+        Billing
+        Support
+    
+    Sign up for (Register for)
+        [x] Alerts
+            Text
+            Email
+            Phone
+
+    Help
+
+
+
+
