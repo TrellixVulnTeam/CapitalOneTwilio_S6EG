@@ -1,0 +1,21 @@
+def getAccount(account)
+
+def getTransactions()
+
+def makeTransfer(medium, phone_number, amount, date=None, description=None)
+
+def getMostRecent()
+
+def makeCall(agency)
+
+def makeSignUp(type)
+
+def getATM(radius=2)
+
+def getCurrentLocation()
+
+def makeWithdrawal(amount)
+
+TODO:
+  Make Merchant
+  Make Purchase

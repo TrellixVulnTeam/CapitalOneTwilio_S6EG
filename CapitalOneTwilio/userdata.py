@@ -2,6 +2,10 @@
 # created by Noah Kalil - MHacks 9
 # 3/25/2017
 
+<<<<<<< HEAD
+=======
+import urllib2
+>>>>>>> c3dfe410f2a14f3922c4b805fea0de1116da86a8
 import json
 import requests
 

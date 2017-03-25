@@ -1,72 +1,45 @@
 from textblob import TextBlob
 from textblob.classifiers import NaiveBayesClassifier
+import re
+from decimal import Decimal
+import json
 
-train = [("Check checking balance", 'balance'),
-         ("Check my checking balance.", 'balance'),
-         ("View my checking balance", 'balance'),
-         ("What is my checking balance?.", 'balance'),
-         ("Check savings balance", 'balance'),
-         ("Check my savings balance", 'balance'),
-         ("View my savings balance.", 'balance'),
-         ("What is my savings balance?", 'balance'),
-         ("What is my balance?", 'balance'),
-         ("Check my balance", 'balance'),
-         ("View my balance?", 'balance'),
-         ("Balance", 'balance'),
-         ("Check recent transactions", 'transactions'),
-         ("View recent transactions", 'transactions'),
-         ("Recent transactions", 'transactions'),
-         ("Check my transactions", 'transactions'),
-         ("View my transactions", 'transactions'),
-         ("What are my recent transactions?", 'transactions'),
-         ("My transactions", 'transactions'),
-         ("Transactions", 'transactions'),
-         ("Check recent alerts", 'alerts'),
-         ("View recent alerts", 'alerts'),
-         ("Recent alerts", 'alerts'),
-         ("Check my alerts", 'alerts'),
-         ("View my alerts", 'alerts'),
-         ("What are my recent alerts?", 'alerts'),
-         ("My alerts", 'alerts'),
-         ("Alerts", 'alerts'),
-         ("Transfer $50 from Checking to Savings", 'transfer'),
-         ("Transfer $20.33 from Savings to Checking", 'transfer'),
-         ("Send $100 from Checking to Savings", 'transfer'),
-         ("Transfer $50 to Checking from Savings", 'transfer'),
-         ("Send $300.00 to Savings from Checking", 'transfer'),
-         ("Transfer", 'transfer'),
-         ("Find ATMs nearby", 'find'),
-         ("Find ATMs near me", 'find'),
-         ("Find ATMs near Ann Arbor", 'find'),
-         ("Find ATMs in New York", 'find'),
-         ("Find atms nearby", 'find'),
-         ("Find atms nearby", 'find'),
-         ("Where are ATMs nearby?", 'find'),
-         ("Where are ATMs in Cleveland?", 'find'),
-         ("Are there any ATMs near me?", 'find'),
-         ("Find", 'find'),
-         ("Call a representative", 'call'),
-         ("Call an agent", 'call'),
-         ("Call customer support", 'call'),
-         ("Call support", 'call'),
-         ("Contact a representative", 'call'),
-         ("Contact customer support", 'call'),
-         ("Call Billing", 'call'),
-         ("Sign up for text alerts", 'register'),
-         ("Sign up for email alerts", 'register'),
-         ("Sign up for phone alerts", 'register'),
-         ("register for text alerts", 'register'),
-         ("register for email alerts", 'register'),
-         ("Help", 'help'),
-         ("Help me", 'help')]
+with open('training.json', 'r') as fp:
+    data = json.loads(fp.read())
+    train = []
+    for d in data:
+        train.append( (d['text'].lower(), d['label']) )
+    cl = NaiveBayesClassifier(train)
 
+def preprocess(message):
+    message = message.lower()
+    return message
 
-test = [("I want to talk to an agent.", 'call'),
-        ("Transfer $65 from Checking to Savings", 'transfer'),
-        ("Find ATMs near me", 'find'),
-        ("What's my checking balance?", 'check')]
+def classify(message):
+    message = preprocess(message)
+    return cl.classify(message)
 
-cl = NaiveBayesClassifier(train)
+need_amounts = ['transfer']
+need_accounts = ['balance']
 
-for line in test:
-    print(cl.classify(line[0]))
+def handle_input(input_msg):
+    action = classify(input_msg)
+    print("Action: ", action)
+    if action in need_accounts:
+        if re.search('checking', input_msg, re.IGNORECASE):
+            print('this is for checking')
+        elif re.search('savings', input_msg, re.IGNORECASE):
+            print('this is for savings')
+        else:
+            print('Here, we respond with something like "Do you want to transfer to checking or savings?"')
+    if action in need_amounts:
+        print("extract amount here")
+
+while(True):
+    print("Ready for input: ")
+    handle_input(input())
+    print("\n\n")
+
+money = '$6,150,593.22'
+value = Decimal(re.sub(r'[^\d.]', '', money))
+print(value)
