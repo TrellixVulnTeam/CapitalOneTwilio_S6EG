@@ -35,15 +35,9 @@ ACTIONS
         Support
         Billing
         Support
-    
+
     Sign up for (Register for)
         [x] Alerts
             Text
-            Email
-            Phone
 
     Help
-
-
-
-

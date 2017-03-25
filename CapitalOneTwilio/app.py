@@ -1,10 +1,9 @@
 
 import requests
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, json
 import os
 from twilio import twiml
 from twilio.rest import TwilioRestClient
-import json
 from dotenv import load_dotenv
 
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
@@ -21,11 +20,15 @@ def inbound_sms():
 
     r = requests.get('http://api.reimaginebanking.com/customers?key={}'
                      .format(os.environ.get('apiKey')))
-    data = r.json()[0]
-    payload = 'First Name: {}\nLast Name: {}'\
-        .format(data['first_name'], data['last_name'])
+
+    data = r.json()
+    payload = ''
+    for i in range(len(r.json())):
+        payload += 'First Name: {}\nLast Name: {}\n'\
+        .format(data[i]['first_name'], data[i]['last_name'])
 
     response.message(payload)
+    print(payload)
 
     return str(response)
 
