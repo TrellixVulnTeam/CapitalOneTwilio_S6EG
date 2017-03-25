@@ -1,0 +1,5 @@
+def getAccount(account)
+
+def getTransactions()
+
+def makeTransfer(medium, payee_id, amount, date=None, description=None)
