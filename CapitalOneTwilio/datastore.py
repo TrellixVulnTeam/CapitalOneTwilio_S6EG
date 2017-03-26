@@ -40,7 +40,27 @@ def createCustomer(payload=None):
 
         # Retrieve Accounts
         accounts = requests.get(os.environ.get('capitalUrl')+'accounts?key='+os.environ.get('apiKey')).json()
-        body['accounts'] = accounts
+        temp_acct = {
+            'Checking': {}
+            'Credit Card': {}
+            'Savings': {}
+        }
+        has_checking = False
+        has_saving = False
+        has_credit = False
+        for i in range(accounts):
+            if has_checking == True && has_saving == True && has_credit == True:
+                break
+            elif account[i]['type'] == "Checking" && has_checking == False:
+                temp_acct['Checking'] = account[i]
+                has_checking == True;
+            elif account[i]['type'] == "Saving" && has_saving == False:
+                temp_acct['Saving'] = account[i]
+                has_saving == True;
+            elif account[i]['type'] == "Credit Card" && has_credit == False:
+                temp_acct['Credit Card'] = account[i]
+                has_credit == True;
+        body['accounts'] = temp_acct
         updateDatabase((body))
 
         summary = "Customer " + customer["objectCreated"]["first_name"] + " " + customer["objectCreated"][

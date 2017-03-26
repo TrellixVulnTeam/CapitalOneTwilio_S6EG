@@ -24,6 +24,7 @@ app = Flask(__name__)
 
 @app.route('/sms', methods=['POST'])
 def inbound_sms():
+
     isInDatabase = conn.hgetall(request.form['From'])
     action, state_params = handle_input(request.form['Body'], action, state_params, ask_for)
     response, ask_for = gen_response(action, state_params)
