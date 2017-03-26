@@ -11,9 +11,6 @@ load_dotenv(dotenv_path)
 
 # apiKey = '553d42f5192db2a972b9478ce912075a'
 
-def create_account(number, type, nickname, rewards, balance):
-
-
 def create_customer(firstname, lastname, address_number, address_st, city, state, zipcode):
     # url for create account api
     url = os.environ.get('capitalUrl') + os.environ.get('apiKey')
