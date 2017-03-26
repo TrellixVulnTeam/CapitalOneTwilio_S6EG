@@ -16,20 +16,9 @@ app = Flask(__name__)
 
 @app.route('/sms', methods=['POST'])
 def inbound_sms():
+    
     response = twiml.Response()
-
-    r = requests.get('http://api.reimaginebanking.com/customers?key={}'
-                     .format(os.environ.get('apiKey')))
-
-    data = r.json()
-    payload = ''
-    for i in range(len(r.json())):
-        payload += 'First Name: {}\nLast Name: {}\n'\
-        .format(data[i]['first_name'], data[i]['last_name'])
-
-    response.message(payload)
-    print(payload)
-
+    response.message('Thank You for using the Capital One Online Banking SMS Service')
     return str(response)
 
 if __name__ == '__main__':
