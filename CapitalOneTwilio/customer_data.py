@@ -14,8 +14,9 @@ config = {
 
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
+results = db.get('/Customers')
 
-print(firebase.database_url)
+print(results)
 
 
 example_person = {
