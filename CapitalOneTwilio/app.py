@@ -1,13 +1,13 @@
 #-*- coding: utf-8 -*-
 from decimal import Decimal
 from parse import *
+from datastore import *
 import requests
 from flask import Flask, render_template, request, json
 import os
 from twilio import twiml
 from twilio.rest import TwilioRestClient
 from functions import *
-from datastore import *
 from textblob import TextBlob
 import datetime
 from dotenv import load_dotenv
