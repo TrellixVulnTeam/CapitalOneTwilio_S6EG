@@ -1,43 +1,49 @@
 import requests
 import datetime
 import json
+import redis
+from CapitalOneTwilio.datastore import *
 
-apiKey = '553d42f5192db2a972b9478ce912075a'
+conn = redis.StrictRedis('localhost', charset='utf-8', decode_responses=True)
+dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 
-def create_account(firstname,lastname,address_number,address_st,city,state,zipcode):
+
+# apiKey = '553d42f5192db2a972b9478ce912075a'
+
+def create_account(number, type, nickname, rewards, balance):
+
+
+def create_customer(firstname, lastname, address_number, address_st, city, state, zipcode):
     # url for create account api
-    url = 'http://api.reimaginebanking.com/customers?key=553d42f5192db2a972b9478ce912075a'
-    person = {
-        "first_name": firstname,
-        "last_name": lastname,
-        "address": {
-            "street_number": address_number,
-            "street_name": address_st,
-            "city": city,
-            "state": state,
-            "zip": zipcode
+    url = os.environ.get('capitalUrl') + os.environ.get('apiKey')
+    body = {
+        "phone_number": "+19252042443",
+        "customer": {
+            "first_name": firstname,
+            "last_name": lastname,
+            "address": {
+                "street_number": address_number,
+                "street_name": address_st,
+                "city": city,
+                "state": state,
+                "zip": zipcode
             }
-        }
-    account = requests.post(url,person)
+        },
+        "accounts": {}
+    }
+
+    account = requests.post(url, json=(body['customer']))
     if account["objectCreated"]:
-        config = {
-          'apiKey': 'AIzaSyDJZDg3h4DOYc1sS4_zyr2u8QKkAgDnqkA',
-          'authToken': 'b2vBy3Ph9nyyUXaJ3CssM5EnTd0Xmzu2i4j8OTQC',
-          'authDomain': ' mhacks9-7440d.firebase.com',
-          'databaseURL': 'https://mhacks9-7440d.firebaseio.com',
-          'storageBucket': 'mhacks9-7440d.appspot.com',
-          'serviceAccount': './MHacks9-fac130f64d40.json'
-        }
-        firebase = pyrebase.initialize_app(config)
-        user = firebase.auth().sign_in_with_email_and_password('ashwin.gokhale98@gmail.com', 'Ashwin98')
+        body['customer'] = account["objectCreated"]
+        updateDatabase((body))
 
-        db = firebase.database()
-
-        result = db.child('Customers').push(account["objectCreated"],token=user['idToken'])
-        summary = "Account for " + account["objectCreated"]["first_name"] + " " + account["objectCreated"]["last_name"] + " successfully created"
+        summary = "Account for " + account["objectCreated"]["first_name"] + " " + account["objectCreated"][
+            "last_name"] + " successfully created"
     else:
         summary = "Failed to create account. Error code: " + account["code"]
     return summary
+
 
 # view all transfers for specified id number
 def view_transfers(id):
@@ -49,23 +55,25 @@ def view_transfers(id):
         date = datetime.datetime.fromtimestamp(
             int(transfers[x]["transaction_date"])
         ).strftime('%Y-%m-%d')
-        summary += str(transaction_number) + ". " + transfers[x]["status"] + " " + transfers[x]["type"] + " of " +  transfers[x]["amount"] + " on " + date
+        summary += str(transaction_number) + ". " + transfers[x]["status"] + " " + transfers[x]["type"] + " of " + \
+                   transfers[x]["amount"] + " on " + date
         summary += "\n"
         transaction_number += 1
     return summary
+
 
 def make_transfer(id, type, to_id, timestamp, amount):
     # implement date as timestamp or "YYYY-MM-DD"
     # if transfer between accounts id == to_id
     url = 'http://api.reimaginebanking.com/accounts/642919792495030/transfers?key=553d42f5192db2a972b9478ce912075a'
     transfer_post = {
-            "medium": "balance",
-            "payee_id": to_id,
-            "amount": amount,
-            "transaction_date": timestamp,
-            }
+        "medium": "balance",
+        "payee_id": to_id,
+        "amount": amount,
+        "transaction_date": timestamp,
+    }
     transfer = requests.post(url, id, transfer_post)
-    summary= ''
+    summary = ''
     if transfer["objectCreated"]:
         summary = "Transaction processed. " + "\n"
         summary += transfer["objectCreated"]["state"] + ["objectCreated"]["type"] + " of "
@@ -73,6 +81,7 @@ def make_transfer(id, type, to_id, timestamp, amount):
     else:
         summary = "Transaction failed. Error code: " + transfer["code"]
     return summary
+
 
 def make_deposit(id, amount):
     time = datetime.datetime.now()
@@ -82,10 +91,11 @@ def make_deposit(id, amount):
         "transaction_date": time,
         "amount": amount
     }
-    result = requests.post(url,deposit_post)
+    result = requests.post(url, deposit_post)
     if result["objectCreated"]:
         summary = "Transaction successful." + "\n"
-        summary += result["objectCreated"]["status"] + " " + result["objectCreated"]["type"] + " of "  + result["objectCreated"]["amount"]
+        summary += result["objectCreated"]["status"] + " " + result["objectCreated"]["type"] + " of " + \
+                   result["objectCreated"]["amount"]
     else:
         summary = "Transaction failed. Error code: " + result["code"]
     return summary
