@@ -1,0 +1,63 @@
+ACTIONS
+
+   
+
+    
+
+    Sign up for (Register for)
+        [x] Alerts
+            Text
+
+    ___________________________________
+Find (Where are) [x]
+    ATMS [x]
+        Nearby
+        In [x]
+        Near [x]
+    Locations [x]
+        Nearby
+        In [x]
+        Near [x]
+ 
+Recent [x]
+    Transactions
+    Alerts
+
+Check (What is/are my) [x]
+    [x] Balance
+        Checking
+        Savings
+        Custom
+
+Transfer (Send) [x]
+    $X From [x]
+        Checking
+        Savings
+        Phone Number
+        Custom
+    To [x]
+        Checking
+        Savings
+        Custom
+    
+Call [x]
+        Representative
+        Agent
+        Support
+
+Help
+___________________________________________
+Intro
+Thank you for signing up for Capital One Text Banking! 
+To get started, try making a request like “Show me my checking account balance,” or “Transfer $20 from my checking to my savings.” For more information, just send us a message asking for help!
+
+Help
+Don’t know where to start? Here’s everything you can do with our service:
+Check your account balance
+View your recent transactions
+View your alerts
+Transfer money between your accounts
+Transfer money to an external account via phone number
+Find ATMs and Capital One banking locations nearby or in a location of your choice
+Get connected with a customer service representative
+Sign up for text alerts related to your account
