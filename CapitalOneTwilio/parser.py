@@ -4,6 +4,7 @@ import re
 from decimal import Decimal
 import json
 
+
 print("Loading...")
 
 reqs = {
@@ -19,10 +20,10 @@ reqs = {
             'missing_resp': "Please enter an amount to transfer."
         },
         'dest': {
-            'missing_resp': 'Which account do you want to transfer to?'
+            'missing_resp': 'Which account do you want to transfer to? Enter "Checking," "Savings," or a phone number.'
         },
         'origin': {
-            'missing_resp': 'Which account do you want to transfer from?'
+            'missing_resp': 'Which account do you want to transfer from? Enter "Checking" or "Savings."'
         }
     },
     'find': {
@@ -111,7 +112,7 @@ def handle_input(input_msg, action=None, state_params=None, ask_for=None):
                     state_params['origin'] = local_dest.group(2)
                     state_params['dest'] = local_dest.group(4)
             ext_origin = re.search(r"from.+(checking|savings)", input_msg)
-            ext_dest = re.search(r"to.+(\d\d\d[-]?\d\d\d[-]?\d\d\d\d)$", input_msg)
+            ext_dest = re.search(r"to.+([+]1\d\d\d[-]?\d\d\d[-]?\d\d\d\d)$", input_msg)
             if ext_dest and ext_origin:
                 state_params['origin'] = ext_origin.group(1)
                 state_params['dest'] = ext_dest.group(1)
