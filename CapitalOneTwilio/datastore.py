@@ -23,19 +23,18 @@ def createCustomer(payload=None):
         .format(os.environ.get('apiKey'))
     body = {
         "phone_number": "+19252042443",
-        "customer": dict([
-            ("first_name", payload['first_name'] if payload else "Buddy"),
-            ("last_name", payload['last_name'] if payload else "Guy"),
-            ("address", dict([
-                ("street_number", payload['street_number'] if payload else "1234"),
-                ("street_name", payload['street_name'] if payload else "Main St"),
-                ("city", payload['city'] if payload else "Ann Arbor"),
-                ("state", payload['state'] if payload else "MI"),
-                ("zip", payload['zipcode'] if payload else "48109")
-                ]).__dict__
-            )
-        ]),
-    "accounts": dict().__dict__
+        "customer": {
+            "first_name": payload['first_name'] if payload else "Buddy",
+            "last_name": payload['last_name'] if payload else "Guy",
+            "address": {
+                "street_number": payload['street_number'] if payload else "1234",
+                "street_name": payload['street_name'] if payload else "Main St",
+                "city": payload['city'] if payload else "Ann Arbor",
+                "state": payload['state'] if payload else "MI",
+                "zip": payload['zipcode'] if payload else "48109"
+            }
+        },
+        "accounts": {}
     }
 
     customer = requests.post(url, json=(body['customer'])).json()
