@@ -18,6 +18,7 @@ app = Flask(__name__)
 
 @app.route('/sms', methods=['POST'])
 def inbound_sms():
+
     isInDatabase = conn.hgetall(request.form['From'])
     response = twiml.Response()
     response.message('Thank You for using the Capital One Online Banking SMS Service')
