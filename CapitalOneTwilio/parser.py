@@ -9,7 +9,7 @@ print("Loading...")
 reqs = {
     'balance': {
         'account': {
-            'optional': True
+            'missing_resp': 'Which account would you like to check?'
         }
     },
     'transactions':'',
@@ -70,12 +70,20 @@ def handle_input(input_msg, action=None, state_params=None, ask_for=None):
     if state_params is None:
         state_params = dict()
     if action == 'balance':
-        for account in accounts:
-            if re.search(account, input_msg, re.IGNORECASE):
-                state_params['account'] = account
-                print("found",account)
-                break
+        print("Checking Balance!")
+        if ask_for in accounts:
+            for account in accounts:
+                if re.search(account, input_msg, re.IGNORECASE):
+                    state_params[ask_for] = account
+                    break
+        else:
+            for account in accounts:
+                if re.search(account, input_msg, re.IGNORECASE):
+                    state_params['account'] = account
+                    print("found",account)
+                    break
     elif action == 'transfer':
+        print("Transferring!")
         if ask_for in ['origin','dest']:
             for account in accounts:
                 if re.search(account, input_msg, re.IGNORECASE):
@@ -132,6 +140,7 @@ def gen_response(action, state_params):
     for param in action_reqs:
         if param not in state_params and 'optional' not in action_reqs[param]:
             return action_reqs[param]['missing_resp'], param
+
     return 'default response', None
 
 action = None
@@ -143,8 +152,26 @@ while(True):
     action, state_params = handle_input(input(), action, state_params, ask_for)
     response, ask_for = gen_response(action, state_params)
     if ask_for is None:
+        if action == 'transactions':
+            print("It looks like you're trying to view your recent transactions. Is this correct?")
+        elif action == 'alerts':
+            print("It looks like you're trying to view your alerts. Is this correct?")
+        elif action == 'register':
+            print("It sounds like you'd like to register for text alerts. Is this correct?")
+        elif action == 'call':
+            print("It sounds like you'd like to speak to customer support. Is this correct?")
+        elif action == 'balance':
+            print("It sounds like you're trying to check the balance of your ", 
+            state_params['account'], " account. Is this correct?")
+        elif action == 'transfer':
+            print("It sounds like you're trying to transfer $", round(Decimal(state_params["amount"]), 2), " from ", 
+            state_params["origin"], " to ", state_params["dest"], ", is that correct?")
+        elif action == 'find':
+            print("It sounds like you'd like to find a ", state_params["facility"], 
+            " ", state_params["location"], ", is that correct?")
         action = None
         state_params = None
+        
     else:
-        print("Secretly, I want to know the", ask_for)
+       print("Secretly, I want to know the", ask_for)
     print(response, "\n\n")
