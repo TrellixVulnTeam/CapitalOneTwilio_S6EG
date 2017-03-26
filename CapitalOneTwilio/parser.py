@@ -12,8 +12,8 @@ reqs = {
             'optional': True
         }
     },
-    'transactions':[],
-    'alerts':[],
+    'transactions':'',
+    'alerts':'',
     'transfer': {
         'amount': {
             'missing_resp': "Please enter an amount to transfer."
@@ -26,13 +26,20 @@ reqs = {
         }
     },
     'find': {
+        'facility':{
+            'missing_resp': 'What are you looking for?'
+        },
         'location': {
             'optional': True
         }
-    }
+    },
+    'call': '',
+    'help': '',
+    'register': ''
 }
 
 accounts = ['checking', 'savings']
+facilities = ['atm', 'office', 'bank', 'location', 'store', 'capital one']
 
 moneyregex = re.compile('|'.join([
     r'\$?(\d*\.\d{1,2})[^A-z]+',  # e.g., $.50, .50, $1.50, $.5, .5
@@ -54,7 +61,7 @@ with open('training.json', 'r') as fp:
     for d in data:
         train.append((preprocess(d['text']), d['label']))
     cl = NaiveBayesClassifier(train)
-n
+
 def handle_input(input_msg, action=None, state_params=None, ask_for=None):
     print("INPUT: Action:", action, "Params:", state_params, "Asking for:", ask_for)
     if action is None:
@@ -90,7 +97,34 @@ def handle_input(input_msg, action=None, state_params=None, ask_for=None):
                 else:
                     state_params['origin'] = dest_results.group(2)
                     state_params['dest'] = dest_results.group(4)
-    # print("OUTPUT: Action:", action, "Params:", state_params)
+    elif action == 'call':
+        print("Calling!")
+        state_params['call'] = "make call"
+    elif action == 'help':
+        print("Helping!")
+        state_params['help'] = "get help"
+    elif action == 'find':
+        print("Finding!")
+        if ask_for == "facility":
+            for facility in facilities:
+                if re.search(facility, input_msg, re.IGNORECASE):
+                    state_params[ask_for] = facility
+                    break
+        else:
+            for facility in facilities:
+                if re.search(facility, input_msg, re.IGNORECASE):
+                    state_params['facility'] = facility
+                    state_params['location'] = input_msg + "Capital One"
+    elif action == "transactions":
+        print("Transacting!")
+        state_params['transactions'] = "get transactions"
+    elif action == "alerts":
+        print("Alerting!")
+        state_params['alerts'] = "get alerts"
+    elif action == "register":
+        print("Registering!")
+        state_params['register'] = "register"
+    print("OUTPUT: Action:", action, "Params:", state_params)
     return action, state_params
 
 def gen_response(action, state_params):
