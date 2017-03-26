@@ -4,23 +4,58 @@ import os
 import json
 from dotenv import load_dotenv
 from redisworks import Root
+from decimal import Decimal
+import datetime
 
 conn = redis.StrictRedis('localhost', charset='utf-8', decode_responses=True)
-root = Root()
+root = Root(host='localhost', return_object=True)
 
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
+sets = (set, frozenset)
+
+from builtins import int
+strings = (str, bytes)  # which are both basestring
+numbers = (int, float, complex, datetime.datetime, datetime.date, Decimal)
+items = 'items'
+import builtins
+from collections import MutableMapping, Iterable
+
+
+TYPE_IDENTIFIER = '!__'
+bTYPE_IDENTIFIER = TYPE_IDENTIFIER.encode('utf-8')
+ITEM_DIVIDER = '|==|'
+bITEM_DIVIDER = ITEM_DIVIDER.encode('utf-8')
+
+DATETIME_FORMAT = "%Y-%m-%dT%H:%M:%S.%fZ"
+DATE_FORMAT = "%Y-%m-%d"
+
+# In addition to built in types:
+OTHER_STANDARD_TYPES = {'Decimal': Decimal, 'datetime': datetime.datetime, 'date': datetime.date}
+
+TYPE_FORMATS = {
+    numbers: "num",
+    sets: "set",
+    MutableMapping: "dict",
+    Iterable: "list",
+    "obj": "obj",
+    strings: "str"
+}
+
+for i in TYPE_FORMATS:
+    TYPE_FORMATS[i] = TYPE_IDENTIFIER + TYPE_FORMATS[i] + ITEM_DIVIDER +\
+                      '{actual_type}' + ITEM_DIVIDER + '{value}'
 
 def getAccount(number, account='All'):
-        return root[number]['accounts'][account]
+        accounts = getUser(number)['accounts']
+        return accounts if account=='All' else accounts[account]
 
-
-def createCustomer(payload=None):
+def createCustomer(number, payload=None):
     url = os.environ.get('capitalUrl') + 'customers?key={}' \
         .format(os.environ.get('apiKey'))
     body = {
-        "phone_number": os.environ.get('fromNumber'),
+        "phone_number": number,
         "customer": {
             "first_name": payload['first_name'] if payload else "Buddy",
             "last_name": payload['last_name'] if payload else "Guy",
@@ -41,27 +76,28 @@ def createCustomer(payload=None):
         # Retrieve Accounts
         accounts = requests.get(os.environ.get('capitalUrl')+'accounts?key='+os.environ.get('apiKey')).json()
         temp_acct = {
-            'Checking': {}
-            'Credit Card': {}
+            'Checking': {},
+            'Credit Card': {},
             'Savings': {}
         }
+
         has_checking = False
         has_saving = False
         has_credit = False
-        for i in range(accounts):
-            if has_checking == True && has_saving == True && has_credit == True:
+        for i in range(len(accounts)):
+            if has_checking == True and has_saving == True and has_credit == True:
                 break
-            elif account[i]['type'] == "Checking" && has_checking == False:
-                temp_acct['Checking'] = account[i]
-                has_checking == True;
-            elif account[i]['type'] == "Saving" && has_saving == False:
-                temp_acct['Saving'] = account[i]
-                has_saving == True;
-            elif account[i]['type'] == "Credit Card" && has_credit == False:
-                temp_acct['Credit Card'] = account[i]
-                has_credit == True;
+            elif accounts[i]['type'] == "Checking" and has_checking == False:
+                temp_acct['Checking'] = accounts[i]
+                has_checking = True
+            elif accounts[i]['type'] == "Saving" and has_saving == False:
+                temp_acct['Saving'] = accounts[i]
+                has_saving = True
+            elif accounts[i]['type'] == "Credit Card" and has_credit == False:
+                temp_acct['Credit Card'] = accounts[i]
+                has_credit = True
         body['accounts'] = temp_acct
-        updateDatabase((body))
+        updateDatabase(body['phone_number'], body)
 
         summary = "Customer " + customer["objectCreated"]["first_name"] + " " + customer["objectCreated"][
             "last_name"] + " successfully created"
@@ -72,26 +108,30 @@ def createCustomer(payload=None):
 
 def createAccount(number, payload=None):
     user = getUser(number)
+    print(user)
+
+    #print(root.return_object)
+
     payload = {
-        "type": payload['type'] if payload else "Credit Card",
+        "type": payload['type'] if payload else "Credit Card", # Credit Card, Checkings, Savings
         "nickname": payload['nickname'] if payload else "Checking",
         "rewards": payload['rewards'] if payload else 0,
         "balance": payload['balance'] if payload else 0
     }
 
-    print(user)
-    print(os.environ.get('apiKey'))
     url = os.environ.get('capitalUrl') + 'customers/' \
           + user['customer']['_id'] \
           + '/accounts/?key=' + os.environ.get('apiKey')
-    print(url)
 
     account = requests.post(url, json=(payload)).json()
     if account["objectCreated"]:
         obj = account["objectCreated"]
-        print(root[user['phone_number']])
-        root[user['phone_number']] = user
-        updateDatabase(user)
+        #print(root[user['phone_number']])
+        user['accounts'][obj['type']] = obj
+        #print(user)
+
+        #root[user['phone_number']] = user
+        updateDatabase(number, user)
 
         summary = obj['nickname'] + " account successfully created"
     else:
@@ -100,12 +140,12 @@ def createAccount(number, payload=None):
 
 
 def getUser(number):
-    return root[number]
+    return root.load([number])[number]
 
-
-def updateDatabase(user):
-    root[user['phone_number']] = user
+def updateDatabase(number, user):
     root.flush()
+    root.save(number, user)
+
 
 def deleteAccount(number, id=None):
     accounts = requests.get(os.environ.get('capitalUrl') + 'accounts?key=' + os.environ.get('apiKey')).json()
@@ -113,13 +153,12 @@ def deleteAccount(number, id=None):
         url = (os.environ.get('capitalUrl')+'accounts/'+accounts[i]['_id']+'?key='+os.environ.get('apiKey'))
         requests.delete(url)
 
+def kevinsalgo():
+
+
 if __name__ == '__main__':
-    num = os.environ.get('fromNumber')
-    print(createCustomer())
-    #print(createAccount(num))
-    # print(createAccount(num, {
-    #     'type': 'Credit Card',
-    #     'nickname': 'Savings',
-    #     'rewards': 500,
-    #     'balance': 1000
-    # }))
+    for num in os.environ.get('numbers'):
+        createCustomer(num)
+        createAccount(num)
+        user = getUser(num)
+
