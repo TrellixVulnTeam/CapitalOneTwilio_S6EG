@@ -198,7 +198,7 @@ while(True):
             state_params = None
         else:
             print("Sorry about that!")
-            state_params["answer"] = None
+            state_params = None
             continue
         
     else:
