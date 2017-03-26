@@ -7,19 +7,19 @@ fire_url = 'https://mhacks9-7440d.firebaseio.com'
 
 config = {
   'apiKey': 'AIzaSyDJZDg3h4DOYc1sS4_zyr2u8QKkAgDnqkA',
+  'authToken': 'b2vBy3Ph9nyyUXaJ3CssM5EnTd0Xmzu2i4j8OTQC',
   'authDomain': ' mhacks9-7440d.firebase.com',
   'databaseURL': 'https://mhacks9-7440d.firebaseio.com',
-  'storageBucket': 'mhacks9-7440d.appspot.com'
+  'storageBucket': 'mhacks9-7440d.appspot.com',
+  'serviceAccount': './MHacks9-fac130f64d40.json'
 }
 
 firebase = pyrebase.initialize_app(config)
+user = firebase.auth().sign_in_with_email_and_password('ashwin.gokhale98@gmail.com', 'Ashwin98')
+
 db = firebase.database()
-results = db.get('/Customers')
 
-print(results)
-
-
-example_person = {
+person = {
   'first_name': 'Joe',
   'last_name': 'Schmoe',
   'address': {
@@ -30,17 +30,6 @@ example_person = {
     'zip': '48109'
   }
 }
-'''
-example_json_data = json.dumps(example_person)
 
-response = requests.post(cap_url, data=example_json_data, headers = {'content-type': 'application/json'})
-person = json.loads(response.text)['objectCreated']
-user_info = {
-    'url': fire_url,
-    'first_name': person['first_name'],
-    'last_name': person['last_name'],
-    'user_id': person['_id']
-}
-data = json.dumps(user_info)
-result = firebase.post('/Customers', data=data)
-'''
+result = db.child('Customers').push(person,token=user['idToken'])
+
