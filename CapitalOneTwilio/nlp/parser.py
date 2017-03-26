@@ -107,6 +107,7 @@ def handle_input(input_msg, action=None, state_params=None, ask_for=None):
             ext_origin = re.search(r"from.+(checking|savings)", input_msg)
             ext_dest = re.search(r"to.+([+]1\d\d\d[-]?\d\d\d[-]?\d\d\d\d)$", input_msg)
             if local_dest:
+                print(local_dest).group(2)
                 if local_dest.group(1) is 'to':
                     state_params['dest'] = local_dest.group(2)
                     state_params['origin'] = local_dest.group(4)
@@ -114,6 +115,7 @@ def handle_input(input_msg, action=None, state_params=None, ask_for=None):
                     state_params['origin'] = local_dest.group(2)
                     state_params['dest'] = local_dest.group(4)
             elif ext_dest and ext_origin:
+                print(ext_dest).group(1)
                 state_params['origin'] = ext_origin.group(1)
                 state_params['dest'] = ext_dest.group(1)
     elif action == 'call':
@@ -159,7 +161,7 @@ def gen_response(action, state_params):
         if param not in state_params and 'optional' not in action_reqs[param]:
             return action_reqs[param]['missing_resp'], param
 
-    return 'default response', None
+    return 'Thank you for using Capital One.', None
 
 action = None
 state_params = None
@@ -169,6 +171,7 @@ while(True):
     print("Ready for input: ")
     action, state_params = handle_input(input(), action, state_params, ask_for)
     response, ask_for = gen_response(action, state_params)
+    print(action)
     if ask_for is None:
         if action == 'transactions':
             print("It looks like you're trying to view your recent transactions. Is this correct?")
@@ -189,6 +192,9 @@ while(True):
             print("It sounds like you'd like to find ", state_params["location"], ", is that correct?")
         elif action == 'help':
             #SEND HELP MESSAGE
+            action = None
+            state_params = None
+            print("Help message!")
             continue
         confirm = handle_input(input(), "confirmation", state_params, None)
         if state_params["answer"] == "y":
@@ -198,8 +204,9 @@ while(True):
             state_params = None
         else:
             print("Sorry about that!")
+            action = None
             state_params = None
-            continue
+
         
     else:
        print("Secretly, I want to know the", ask_for)
