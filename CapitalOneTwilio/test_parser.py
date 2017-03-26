@@ -6,4 +6,4 @@ test = [("I want to talk to an agent.", 'call'),
         ("What's my checking balance?", 'check')]
 
 for line in test:
-    print(cl.classify(line[0]))
+    print(classify(line[0]))
