@@ -1,6 +1,5 @@
 import requests
 import datetime
-import pyrebase
 import json
 
 apiKey = '553d42f5192db2a972b9478ce912075a'
@@ -44,7 +43,7 @@ def create_account(firstname,lastname,address_number,address_st,city,state,zipco
 def view_transfers(id):
     url = 'http://api.reimaginebanking.com/accounts/416801051848956/transfers?key=553d42f5192db2a972b9478ce912075a'
     transfers = requests.get(url, id)
-    summary
+    summary = ''
     transaction_number = 1
     for x in transfers:
         date = datetime.datetime.fromtimestamp(
@@ -66,7 +65,7 @@ def make_transfer(id, type, to_id, timestamp, amount):
             "transaction_date": timestamp,
             }
     transfer = requests.post(url, id, transfer_post)
-    summary
+    summary= ''
     if transfer["objectCreated"]:
         summary = "Transaction processed. " + "\n"
         summary += transfer["objectCreated"]["state"] + ["objectCreated"]["type"] + " of "
