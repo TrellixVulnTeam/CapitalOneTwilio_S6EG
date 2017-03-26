@@ -102,14 +102,19 @@ def handle_input(input_msg, action=None, state_params=None, ask_for=None):
             amount_match = moneyregex.search(input_msg)
             if amount_match:
                 state_params['amount'] = re.sub(r'[\$\s]*', '', amount_match.group(0))
-            dest_results = re.search(r"(to|from).+(checking|savings).+(to|from).+(checking|savings)", input_msg)
-            if dest_results:
-                if dest_results.group(1) is 'to':
-                    state_params['dest'] = dest_results.group(2)
-                    state_params['origin'] = dest_results.group(4)
+            local_dest = re.search(r"(to|from).+(checking|savings).+(to|from).+(checking|savings)", input_msg)
+            if local_dest:
+                if local_dest.group(1) is 'to':
+                    state_params['dest'] = local_dest.group(2)
+                    state_params['origin'] = local_dest.group(4)
                 else:
-                    state_params['origin'] = dest_results.group(2)
-                    state_params['dest'] = dest_results.group(4)
+                    state_params['origin'] = local_dest.group(2)
+                    state_params['dest'] = local_dest.group(4)
+            ext_origin = re.search(r"from.+(checking|savings)", input_msg)
+            ext_dest = re.search(r"to.+(\d\d\d[-]?\d\d\d[-]?\d\d\d\d)$", input_msg)
+            if ext_dest and ext_origin:
+                state_params['origin'] = ext_origin.group(1)
+                state_params['dest'] = ext_dest.group(1)
     elif action == 'call':
         print("Calling!")
         state_params['call'] = "make call"
