@@ -179,15 +179,20 @@ while(True):
             print("It sounds like you're trying to transfer $", round(Decimal(state_params["amount"]), 2), " from ", 
             state_params["origin"], " to ", state_params["dest"], ", is that correct?")
         elif action == 'find':
-            print("It sounds like you'd like to find ", state_params["facility"], 
-            " ", state_params["location"], ", is that correct?")
+            state_params['location'] = state_params['location'].replace(" Capital One", "")
+            print("It sounds like you'd like to find ", state_params["location"], ", is that correct?")
+        elif action == 'help':
+            #SEND HELP MESSAGE
+            continue
         confirm = handle_input(input(), "confirmation", state_params, None)
         if state_params["answer"] == "y":
+            #SEND ACTION
             print("Action confirmed!")
             action = None
             state_params = None
         else:
             print("Sorry about that!")
+            state_params["answer"] = None
             continue
         
     else:
