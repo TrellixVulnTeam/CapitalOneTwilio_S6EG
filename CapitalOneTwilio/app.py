@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, json
 import os
 from twilio import twiml
 from twilio.rest import TwilioRestClient
+from datastore import *
 from dotenv import load_dotenv
 
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
@@ -18,7 +19,7 @@ app = Flask(__name__)
 def inbound_sms():
     
     response = twiml.Response()
-    response.message('Thank You for using the Capital One Online Banking SMS Service')
+    response.message('Thank you for signing up for Capital One Text Banking! To get started, try making a request like “Show me my checking account balance,” or “Transfer $20 from my checking to my savings.” For more information, just send us a message asking for help!')
     return str(response)
 
 if __name__ == '__main__':
