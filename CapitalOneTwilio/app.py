@@ -5,9 +5,11 @@ import os
 from twilio import twiml
 from twilio.rest import TwilioRestClient
 from dotenv import load_dotenv
+import redis
 
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 load_dotenv(dotenv_path)
+conn = redis.StrictRedis('localhost', charset='utf-8', decode_responses=True)
 
 client = TwilioRestClient(account=os.environ.get('accountSid'),
                           token=os.environ.get('authToken'))
@@ -16,7 +18,7 @@ app = Flask(__name__)
 
 @app.route('/sms', methods=['POST'])
 def inbound_sms():
-    
+    isInDatabase = conn.hgetall(request.form['From'])
     response = twiml.Response()
     response.message('Thank You for using the Capital One Online Banking SMS Service')
     return str(response)
