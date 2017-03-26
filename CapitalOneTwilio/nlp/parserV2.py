@@ -165,53 +165,53 @@ def gen_response(action, state_params):
     return 'Thank you for using Capital One.', None
 
 
-action = None
-state_params = None
-ask_for = None
+def message_manager(input_msg):
+    action = None
+    state_params = None
+    ask_for = None
+    while(True):
+        print("Ready for input: ")
+        action, state_params = handle_input(input_msg, action, state_params, ask_for)
+        response, ask_for = gen_response(action, state_params)
+        print(action)
+        if ask_for is None:
+            if action == 'transactions':
+                print("It looks like you're trying to view your recent transactions. Is this correct?")
+            elif action == 'alerts':
+                print("It looks like you're trying to view your alerts. Is this correct?")
+            elif action == 'register':
+                print("It sounds like you'd like to register for text alerts. Is this correct?")
+            elif action == 'call':
+                print("It sounds like you'd like to speak to customer support. Is this correct?")
+            elif action == 'balance':
+                print("It sounds like you're trying to check the balance of your ", 
+                state_params['account'], " account. Is this correct?")
+            elif action == 'transfer':
+                print("It sounds like you're trying to transfer $", round(Decimal(state_params["amount"]), 2), " from ", 
+                state_params["origin"], " to ", state_params["dest"], ", is that correct?")
+            elif action == 'find':
+                state_params['location'] = state_params['location'].replace(" Capital One", "")
+                print("It sounds like you'd like to find ", state_params["location"], ", is that correct?")
+            elif action == 'help':
+                #SEND HELP MESSAGE
+                action = None
+                state_params = None
+                print("Help message!")
+            return action, state
+            confirm = handle_input(input(), "confirmation", state_params, None)
+            if state_params["answer"] == "y":
+                #send(action)
+                #send(state_params)
+                print("Action confirmed!")
+                action = None
+                state_params = None
+            else:
+                print("Sorry about that!")
+                action = None
+                state_params = None
 
-while(True):
-    print("Ready for input: ")
-    action, state_params = handle_input(input(), action, state_params, ask_for)
-    response, ask_for = gen_response(action, state_params)
-    print(action)
-    if ask_for is None:
-        if action == 'transactions':
-            print("It looks like you're trying to view your recent transactions. Is this correct?")
-        elif action == 'alerts':
-            print("It looks like you're trying to view your alerts. Is this correct?")
-        elif action == 'register':
-            print("It sounds like you'd like to register for text alerts. Is this correct?")
-        elif action == 'call':
-            print("It sounds like you'd like to speak to customer support. Is this correct?")
-        elif action == 'balance':
-            print("It sounds like you're trying to check the balance of your ", 
-            state_params['account'], " account. Is this correct?")
-        elif action == 'transfer':
-            print("It sounds like you're trying to transfer $", round(Decimal(state_params["amount"]), 2), " from ", 
-            state_params["origin"], " to ", state_params["dest"], ", is that correct?")
-        elif action == 'find':
-            state_params['location'] = state_params['location'].replace(" Capital One", "")
-            print("It sounds like you'd like to find ", state_params["location"], ", is that correct?")
-        elif action == 'help':
-            #SEND HELP MESSAGE
-            action = None
-            state_params = None
-            print("Help message!")
-            continue
-        confirm = handle_input(input(), "confirmation", state_params, None)
-        if state_params["answer"] == "y":
-            #send(action)
-            #send(state_params)
-            print("Action confirmed!")
-            action = None
-            state_params = None
+            
         else:
-            print("Sorry about that!")
-            action = None
-            state_params = None
-
-        
-    else:
-        #send 'need more details'
-        print("Secretly, I want to know the", ask_for)
-        print(response, "\n\n")
+            #send 'need more details'
+            print("Secretly, I want to know the", ask_for)
+            print(response, "\n\n")
