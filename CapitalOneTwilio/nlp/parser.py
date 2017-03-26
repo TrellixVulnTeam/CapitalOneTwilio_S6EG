@@ -2,10 +2,8 @@ from textblob import TextBlob
 from textblob.classifiers import NaiveBayesClassifier
 import re
 from decimal import Decimal
+from twilio import twiml
 import json
-
-
-print("Loading...")
 
 reqs = {
     'balance': {
@@ -69,14 +67,14 @@ with open('training.json', 'r') as fp:
     cl = NaiveBayesClassifier(train)
 
 def handle_input(input_msg, action=None, state_params=None, ask_for=None):
-    print("INPUT: Action:", action, "Params:", state_params, "Asking for:", ask_for)
+    # print("INPUT: Action:", action, "Params:", state_params, "Asking for:", ask_for)
     if action is None:
         action = classify(input_msg)
     action_reqs = reqs[action]
     if state_params is None:
         state_params = dict()
     if action == 'balance':
-        print("Checking Balance!")
+        # print("Checking Balance!")
         if ask_for in accounts:
             for account in accounts:
                 if re.search(account, input_msg, re.IGNORECASE):
@@ -86,11 +84,14 @@ def handle_input(input_msg, action=None, state_params=None, ask_for=None):
             for account in accounts:
                 if re.search(account, input_msg, re.IGNORECASE):
                     state_params['account'] = account
-                    print("found",account)
+                    # print("found",account)
                     break
     elif action == 'transfer':
-        print("Transferring!")
+        # print("Transferring!")
         if ask_for in ['origin','dest']:
+            ext_dest = re.search(r"([+]1\d\d\d[-]?\d\d\d[-]?\d\d\d\d)", input_msg, re.IGNORECASE)
+            if ext_dest:
+                state_params[ask_for] = ext_dest.group(0)
             for account in accounts:
                 if re.search(account, input_msg, re.IGNORECASE):
                     state_params[ask_for] = account
@@ -105,17 +106,17 @@ def handle_input(input_msg, action=None, state_params=None, ask_for=None):
                 state_params['amount'] = re.sub(r'[\$\s]*', '', amount_match.group(0))
             local_dest = re.search(r"(to|from).+(checking|savings).+(to|from).+(checking|savings)", input_msg)
             ext_origin = re.search(r"from.+(checking|savings)", input_msg)
-            ext_dest = re.search(r"to.+([+]1\d\d\d[-]?\d\d\d[-]?\d\d\d\d)$", input_msg)
+            ext_dest = re.search(r"(to.+)?([+]1\d\d\d[-]?\d\d\d[-]?\d\d\d\d)$", input_msg)
+            # print("EXT DEST: ", ext_dest)
             if local_dest:
-                print(local_dest).group(2)
+                # print("LOCAL DEST: ", local_dest.group(2))
                 if local_dest.group(1) is 'to':
                     state_params['dest'] = local_dest.group(2)
                     state_params['origin'] = local_dest.group(4)
                 else:
                     state_params['origin'] = local_dest.group(2)
                     state_params['dest'] = local_dest.group(4)
-            elif ext_dest and ext_origin:
-                print(ext_dest).group(1)
+            if ext_dest:        
                 state_params['origin'] = ext_origin.group(1)
                 state_params['dest'] = ext_dest.group(1)
     elif action == 'call':
@@ -198,7 +199,8 @@ while(True):
             continue
         confirm = handle_input(input(), "confirmation", state_params, None)
         if state_params["answer"] == "y":
-            #SEND ACTION
+            #send(action)
+            #send(state_params)
             print("Action confirmed!")
             action = None
             state_params = None
