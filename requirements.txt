@@ -16,6 +16,6 @@ mock
 gevent
 gunicorn
 requests
-dotenv
+python-dotenv
 pyrebase
 twilio
