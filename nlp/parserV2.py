@@ -2,7 +2,7 @@ import json
 import re
 import os
 from decimal import Decimal
-from CapitalOneTwilio.datastore import *
+from datastore import *
 
 from textblob.classifiers import NaiveBayesClassifier
 

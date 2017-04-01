@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from CapitalOneTwilio.nlp.parserV2 import *
-from CapitalOneTwilio.datastore import *
+from nlp.parserV2 import *
+from datastore import *
 from flask import Flask, render_template, request, json
 import os
 from twilio import twiml
@@ -30,9 +30,9 @@ client = TwilioRestClient(account=os.environ.get('accountSid'),
                           token=os.environ.get('authToken'))
 app = Flask(__name__)
 
-@app.route('/sms', methods=['GET'])
+@app.route('/', methods=['GET'])
 def inbound_get():
-    return "<h1>The is the SMS page</h1>"
+    return "<h1>The is the Home page</h1>"
 
 @app.route('/sms', methods=['POST'])
 def inbound_sms():

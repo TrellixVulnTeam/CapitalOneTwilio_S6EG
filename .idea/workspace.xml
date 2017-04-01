@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06e20af7-a46c-4a7b-b750-a3da78f92d96" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CapitalOneTwilio/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CapitalOneTwilio/nlp/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Procfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/requirements.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/runtime.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/FlaskTut.iml" afterPath="$PROJECT_DIR$/.idea/FlaskTut.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CapitalOneTwilio/.env" afterPath="$PROJECT_DIR$/CapitalOneTwilio/.env" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CapitalOneTwilio/app.py" afterPath="$PROJECT_DIR$/CapitalOneTwilio/app.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CapitalOneTwilio/datastore.py" afterPath="$PROJECT_DIR$/CapitalOneTwilio/datastore.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CapitalOneTwilio/messager.py" afterPath="$PROJECT_DIR$/CapitalOneTwilio/messager.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CapitalOneTwilio/nlp/parserV2.py" afterPath="$PROJECT_DIR$/CapitalOneTwilio/nlp/parserV2.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CapitalOneTwilio/parse.py" afterPath="$PROJECT_DIR$/CapitalOneTwilio/parse.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.py" afterPath="$PROJECT_DIR$/app.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nlp/parserV2.py" afterPath="$PROJECT_DIR$/nlp/parserV2.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,17 +19,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/CapitalOneTwilio$User.coverage" NAME="User Coverage Results" MODIFIED="1490508531007" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CapitalOneTwilio/data" />
-    <SUITE FILE_PATH="coverage/CapitalOneTwilio$customer_data.coverage" NAME="customer_data Coverage Results" MODIFIED="1490490273198" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CapitalOneTwilio" />
-    <SUITE FILE_PATH="coverage/CapitalOneTwilio$messager.coverage" NAME="messager Coverage Results" MODIFIED="1490901260671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CapitalOneTwilio" />
+    <SUITE FILE_PATH="coverage/CapitalOneTwilio$datastore__1_.coverage" NAME="datastore (1) Coverage Results" MODIFIED="1490509459128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CapitalOneTwilio/data" />
+    <SUITE FILE_PATH="coverage/CapitalOneTwilio$test_parser.coverage" NAME="test_parser Coverage Results" MODIFIED="1491013796543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CapitalOneTwilio/nlp" />
     <SUITE FILE_PATH="coverage/CapitalOneTwilio$FlaskTut.coverage" NAME="FlaskTut Coverage Results" MODIFIED="1491015333303" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/CapitalOneTwilio$text.coverage" NAME="text Coverage Results" MODIFIED="1490473102810" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CapitalOneTwilio" />
-    <SUITE FILE_PATH="coverage/CapitalOneTwilio$test_parser.coverage" NAME="test_parser Coverage Results" MODIFIED="1491013796543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CapitalOneTwilio/nlp" />
-    <SUITE FILE_PATH="coverage/CapitalOneTwilio$parser.coverage" NAME="parser Coverage Results" MODIFIED="1490514387783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CapitalOneTwilio" />
+    <SUITE FILE_PATH="coverage/CapitalOneTwilio$myapp.coverage" NAME="myapp Coverage Results" MODIFIED="1490515403018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CapitalOneTwilio" />
     <SUITE FILE_PATH="coverage/CapitalOneTwilio$datastore.coverage" NAME="datastore Coverage Results" MODIFIED="1490900084914" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CapitalOneTwilio" />
     <SUITE FILE_PATH="coverage/CapitalOneTwilio$parserV2.coverage" NAME="parserV2 Coverage Results" MODIFIED="1491013772789" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CapitalOneTwilio/nlp" />
-    <SUITE FILE_PATH="coverage/CapitalOneTwilio$datastore__1_.coverage" NAME="datastore (1) Coverage Results" MODIFIED="1490509459128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CapitalOneTwilio/data" />
-    <SUITE FILE_PATH="coverage/CapitalOneTwilio$myapp.coverage" NAME="myapp Coverage Results" MODIFIED="1490515403018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CapitalOneTwilio" />
+    <SUITE FILE_PATH="coverage/CapitalOneTwilio$User.coverage" NAME="User Coverage Results" MODIFIED="1490508531007" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CapitalOneTwilio/data" />
+    <SUITE FILE_PATH="coverage/CapitalOneTwilio$parser.coverage" NAME="parser Coverage Results" MODIFIED="1490514387783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CapitalOneTwilio" />
+    <SUITE FILE_PATH="coverage/CapitalOneTwilio$customer_data.coverage" NAME="customer_data Coverage Results" MODIFIED="1490490273198" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CapitalOneTwilio" />
+    <SUITE FILE_PATH="coverage/CapitalOneTwilio$messager.coverage" NAME="messager Coverage Results" MODIFIED="1490901260671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CapitalOneTwilio" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -38,14 +37,24 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/app.py">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="13" column="27" lean-forward="true" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+            <state relative-caret-position="237">
+              <caret line="30" column="18" lean-forward="false" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
               <folding>
-                <element signature="e#24#67#0" expanded="true" />
+                <element signature="e#24#50#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="runtime.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/runtime.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -110,6 +119,11 @@
         <option value="$PROJECT_DIR$/functions/index.js" />
         <option value="$PROJECT_DIR$/CapitalOneTwilio/app.yml" />
         <option value="$PROJECT_DIR$/CapitalOneTwilio/app.py" />
+        <option value="$PROJECT_DIR$/Procfile" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/nlp/parserV2.py" />
+        <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/runtime.txt" />
       </list>
     </option>
   </component>
@@ -153,6 +167,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CapitalOneTwilio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CapitalOneTwilio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nlp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -163,8 +191,8 @@
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/bin/python3.6" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
@@ -202,6 +230,7 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CapitalOneTwilio/datastore.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
     <configuration default="false" name="myapp" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -220,6 +249,7 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CapitalOneTwilio/myapp.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
     <configuration default="false" name="messager" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -238,6 +268,7 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CapitalOneTwilio/messager.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
     <configuration default="false" name="parserV2" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -256,6 +287,7 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CapitalOneTwilio/nlp/parserV2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
     <configuration default="false" name="test_parser" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -274,6 +306,7 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CapitalOneTwilio/nlp/test_parser.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
@@ -294,6 +327,13 @@
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
       <option name="OPTIONS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
       <method />
     </configuration>
     <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
@@ -349,6 +389,7 @@
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="Tox" factoryName="Tox">
@@ -378,26 +419,6 @@
       <scripts />
       <node-interpreter value="project" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Attests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="FlaskTut" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -431,15 +452,10 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="FlaskTut" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
+      <option name="_new_regexPattern" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;.&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
@@ -453,16 +469,9 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="FlaskTut" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;.&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="py.test">
@@ -476,18 +485,10 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="FlaskTut" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="testToRun" value="" />
-      <option name="keywords" value="" />
-      <option name="params" value="" />
-      <option name="USE_PARAM" value="false" />
-      <option name="USE_KEYWORD" value="false" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;.&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
     <configuration default="false" name="FlaskTut" type="PythonConfigurationType" factoryName="Python" singleton="true">
@@ -506,6 +507,7 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CapitalOneTwilio/app.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
     <list size="6">
@@ -525,6 +527,26 @@
         <item index="4" class="java.lang.String" itemvalue="Python.myapp" />
       </list>
     </recent_temporary>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="FlaskTut" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -653,19 +675,20 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="535" y="23" width="1322" height="980" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16692914" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17322835" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988507" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988507" sideWeight="0.5102362" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32837528" sideWeight="0.51338583" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988507" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988507" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988507" sideWeight="0.48976377" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32873562" sideWeight="0.4952756" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32837528" sideWeight="0.48661417" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.49370077" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -737,226 +760,32 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///usr/local/Cellar/python3/3.6.0_1/Frameworks/Python.framework/Versions/3.6/lib/python3.6/json/encoder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="201" column="0" lean-forward="false" selection-start-line="201" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/Cellar/python3/3.6.0_1/Frameworks/Python.framework/Versions/3.6/lib/python3.6/json/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="230" column="0" lean-forward="false" selection-start-line="230" selection-start-column="0" selection-end-line="230" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/redisworks/redisworks.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/dot/dot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="293" column="0" lean-forward="false" selection-start-line="293" selection-start-column="0" selection-end-line="293" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/dump.rdb" />
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/nlp/syntax.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="11" column="45" lean-forward="false" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/parse.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="64" column="14" lean-forward="true" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/nlp/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/runner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-229">
-          <caret line="2" column="14" lean-forward="true" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/twilio/rest/client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/twilio/rest/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="42" column="39" lean-forward="true" selection-start-line="42" selection-start-column="39" selection-end-line="42" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/nlp/training.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="42" lean-forward="false" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/os.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="665" column="0" lean-forward="false" selection-start-line="665" selection-start-column="0" selection-end-line="665" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/requests/structures.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/requests/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="653" column="0" lean-forward="false" selection-start-line="653" selection-start-column="0" selection-end-line="653" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/requests/sessions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="299" column="0" lean-forward="false" selection-start-line="299" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/requests/api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/requests/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="825" column="0" lean-forward="false" selection-start-line="825" selection-start-column="0" selection-end-line="825" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/_collections_abc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="658" column="0" lean-forward="false" selection-start-line="658" selection-start-column="0" selection-end-line="658" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/requests/packages/urllib3/response.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="407" column="0" lean-forward="false" selection-start-line="407" selection-start-column="0" selection-end-line="407" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/methods">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/datastore.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="120" column="11" lean-forward="false" selection-start-line="120" selection-start-column="11" selection-end-line="120" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#15#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/werkzeug/local.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="344" column="0" lean-forward="false" selection-start-line="344" selection-start-column="0" selection-end-line="344" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/werkzeug/datastructures.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="423" column="0" lean-forward="false" selection-start-line="423" selection-start-column="0" selection-end-line="423" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/pyrebase/pyrebase.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="222" column="0" lean-forward="false" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/twilio/twiml.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/flask/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="1993" column="0" lean-forward="false" selection-start-line="1993" selection-start-column="0" selection-end-line="1993" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/werkzeug/debug/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="283" column="0" lean-forward="false" selection-start-line="283" selection-start-column="0" selection-end-line="283" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/nlp/syntax.txt" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/functions.py" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/parse.py" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/nlp/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/runner.py" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/twilio/rest/client.py" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/twilio/rest/base.py" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/nlp/training.json" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/.env" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/os.py" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/requests/structures.py" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/requests/utils.py" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/requests/sessions.py" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/requests/api.py" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/requests/models.py" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/_collections_abc.py" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/requests/packages/urllib3/response.py" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/methods" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/datastore.py" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/werkzeug/local.py" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/werkzeug/datastructures.py" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/pyrebase/pyrebase.py" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/twilio/twiml.py" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/flask/app.py" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/werkzeug/debug/__init__.py" />
     <entry file="file:///usr/local/Cellar/python3/3.6.0_1/Frameworks/Python.framework/Versions/3.6/lib/python3.6/http/server.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="163">
@@ -964,13 +793,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/werkzeug/serving.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="231" column="0" lean-forward="false" selection-start-line="231" selection-start-column="0" selection-end-line="231" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/lib/python3.6/site-packages/werkzeug/serving.py" />
     <entry file="file:///usr/local/Cellar/python3/3.6.0_1/Frameworks/Python.framework/Versions/3.6/lib/python3.6/socketserver.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="163">
@@ -978,40 +801,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/messager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/nlp/test_parser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="26" lean-forward="false" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/nlp/parser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-161">
-          <caret line="178" column="19" lean-forward="false" selection-start-line="178" selection-start-column="19" selection-end-line="178" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/messager.py" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/nlp/test_parser.py" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/nlp/parser.py" />
     <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/.firebaserc" />
     <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/functions/index.js" />
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/nlp/parserV2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4531">
-          <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database.rules.json">
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/nlp/parserV2.py" />
+    <entry file="file://$PROJECT_DIR$/database.rules.json" />
+    <entry file="file://$PROJECT_DIR$/public/SmsPage.html" />
+    <entry file="file://$PROJECT_DIR$/public/index.html" />
+    <entry file="file://$PROJECT_DIR$/.firebaserc" />
+    <entry file="file://$PROJECT_DIR$/firebase.json" />
+    <entry file="file://$PROJECT_DIR$/functions/package.json" />
+    <entry file="file://$PROJECT_DIR$/functions/index.js" />
+    <entry file="file://$PROJECT_DIR$/app.yaml" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/app.yaml" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/app.yml" />
+    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/app.py" />
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1019,85 +826,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/SmsPage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="25" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
+    <entry file="file://$PROJECT_DIR$/nlp/parserV2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
-          <caret line="4" column="7" lean-forward="false" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
+          <caret line="4" column="5" lean-forward="false" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.firebaserc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/firebase.json">
+    <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="53" lean-forward="false" selection-start-line="0" selection-start-column="53" selection-end-line="0" selection-end-column="53" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions/package.json">
+    <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/functions/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/app.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/app.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="19" lean-forward="true" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CapitalOneTwilio/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="13" column="27" lean-forward="true" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+        <state relative-caret-position="237">
+          <caret line="30" column="18" lean-forward="false" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
           <folding>
-            <element signature="e#24#67#0" expanded="true" />
+            <element signature="e#24#50#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/runtime.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
