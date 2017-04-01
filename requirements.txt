@@ -19,4 +19,4 @@ requests
 python-dotenv
 pyrebase
 twilio
-textblob
+http://pyyaml.org/download/pyyaml/PyYAML-3.12.tar.gz
