@@ -20,3 +20,4 @@ python-dotenv
 pyrebase
 twilio
 http://pyyaml.org/download/pyyaml/PyYAML-3.12.tar.gz
+https://pypi.python.org/packages/13/ce/cba8bf82c8ab538d444ea4ab6f4eb1d80340c7b737d7a8d1f08b429fccae/nltk-3.2.2.tar.gz#md5=4cbb8fd444402cf1847c47ff79dcd917
