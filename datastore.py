@@ -37,7 +37,10 @@ def createCustomer(number, payload=None):
                 "state": payload['state'] if payload else "MI",
                 "zip": payload['zipcode'] if payload else "48109"
             }
-        }
+        },
+        "action": "None",
+        "state_params": "None",
+        "ask_for": "None"
     }
 
     customer = requests.post(url, json=(body['customer'])).json()
@@ -45,7 +48,7 @@ def createCustomer(number, payload=None):
         body['customer'] = customer["objectCreated"]
 
         # Retrieve Accounts
-        accounts = requests.get(os.environ.get('capitalUrl')+'accounts?key='+os.environ.get('apiKey')).json()
+        accounts = requests.get(os.environ.get('capitalUrl')+'customers/' + body['customer']['_id']+ '/ accounts?key='+os.environ.get('apiKey')).json()
         temp_acct = {
             'Checking': {},
             'Credit Card': {},
@@ -109,14 +112,11 @@ def getUser(number):
 def updateDatabase(number, user):
     db.child("Customers").child(number).update(user, token)
 
+def updateField(number, key, value):
+    user = getUser(number)
+    user[key] = value
+    updateDatabase(number, user)
+
 
 def deleteAccount(number, id=""):
     requests.delete(os.environ.get('capitalUrl')+'accounts/'+id+'?key='+os.environ.get('apiKey'))
-
-if __name__ == '__main__':
-    num = os.environ.get('fromNumber')
-    # createCustomer(num)
-    # createAccount(num)
-    # user = getUser(num)
-    user = getUser(num)
-    print(user)

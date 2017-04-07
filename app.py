@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
-from nlp.parserV2 import *
+from nlp.parse import *
 from datastore import *
 from flask import Flask, render_template, request, json
 import os
-from twilio import twiml
+import twilio.twiml
 from twilio.rest import TwilioRestClient
-#from functions import *
 import datetime
 from dotenv import load_dotenv
 import pyrebase
@@ -36,16 +35,25 @@ def inbound_get():
 
 @app.route('/sms', methods=['POST'])
 def inbound_sms():
-    action = None
-    state_params = None
-    ask_for = None
-    isInDatabase = db.child('Customers').child(request.form['From']) != None
-    action, state_params = handle_input(request.form['From'],request.form['Body'],
+    number = request.form['From']
+    user = getUser(number)
+    action = user.get('action', None)
+    state_params = user.get('state_params', None)
+    ask_for = user.get('ask_for', None)
+    response = twilio.twiml.Response()
+    action, state_params = handle_input(number,request.form['Body'],
                                         action, state_params, ask_for)
-    response, ask_for = gen_response(action, state_params)
+    resp, ask_for = gen_response(action, state_params)
 
-    response = twiml.Response()
-    if not isInDatabase:
+    # Update fields after processing them
+    updateField(number, 'action', action)
+    updateField(number, 'state_params', state_params)
+    updateField(number, 'ask_for', ask_for)
+
+    response.message(resp)
+
+    if not user:
+        print(createCustomer(number))
         response.message('Thank you for signing up for Capital One Text Banking! To get started,' +
                          'try making a request like “Show me my checking account balance,” or “Transfer 20 from my' +
                          'checking to my savings.” For more information, just send us a message asking for help!')
@@ -87,18 +95,18 @@ def inbound_sms():
                     response.message("Action confirmed!")
                     if action == 'balance':
                         response.message("The current balance in your " + state_params['account'] + " account is " +
-                                         getAccount(request.form['From'], account=state_params['account'])['balance'])
+                                         getAccount(number, account=state_params['account'])['balance'])
                     elif action == 'transactions':
-                        response.message('Your transaction history is:\n' + view_transfers(request.form['From']['id']))
+                        response.message('Your transaction history is:\n' + view_transfers(number['id']))
                     elif action == 'alerts':
                         response.message("Feature coming soon!")
                     elif action == 'register':
                         response.message("Feature coming soon!")
                     elif action == 'call':
-                        client.calls.create(to=18773834802, from_=request.form['From']['id'],
+                        client.calls.create(to=18773834802, from_=number['id'],
                                             url="https://df32cc8f.ngrok.com")
                     elif action == 'transfer':
-                        make_transfer(request.form['From']['id'], 'p2p', state_params['dest'],
+                        make_transfer(number['id'], 'p2p', state_params['dest'],
                                       datetime.datetime.utcnow(), state_params['amount']),
                         response.message(
                             state_params['amount'] + " transferred from " + state_params['origin'] + " to " +
@@ -115,7 +123,7 @@ def inbound_sms():
                     state_params = None
         else:
             #response.message(gen_response(action, state_params))
-            response = gen_response(action, state_params)[0]
+            response.message(gen_response(action, state_params)[0])
             # print("Secretly, I want to know the", ask_for)
             # print(response, "\n\n")
 

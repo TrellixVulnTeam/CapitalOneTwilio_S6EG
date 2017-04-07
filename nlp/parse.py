@@ -3,7 +3,6 @@
 from textblob.classifiers import NaiveBayesClassifier
 import re
 from decimal import Decimal
-from twilio import twiml
 import json
 
 reqs = {
@@ -12,8 +11,8 @@ reqs = {
             'missing_resp': 'Which account would you like to check?'
         }
     },
-    'transactions':'',
-    'alerts':'',
+    'transactions': '',
+    'alerts': '',
     'transfer': {
         'amount': {
             'missing_resp': "Please enter an amount to transfer."
@@ -26,7 +25,7 @@ reqs = {
         }
     },
     'find': {
-        'facility':{
+        'facility': {
             'missing_resp': 'What are you looking for?'
         },
         'location': {
@@ -48,24 +47,28 @@ facilities = ['atm', 'office', 'bank', 'location', 'store', 'capital one']
 
 moneyregex = re.compile('|'.join([
     r'\$?(\d*\.\d{1,2})[^A-z]+',  # e.g., $.50, .50, $1.50, $.5, .5
-    r'\$?(\d+)[^A-z]+',           # e.g., $500, $5, 500, 5
-    r'\$(\d+\.?)[^A-z]+',         # e.g., $5.
+    r'\$?(\d+)[^A-z]+',  # e.g., $500, $5, 500, 5
+    r'\$(\d+\.?)[^A-z]+',  # e.g., $5.
 ]))
+
 
 def preprocess(message):
     message = message.lower()
     return message
 
+
 def classify(message):
     message = preprocess(message)
     return cl.classify(message)
 
-with open('training.json', 'r') as fp:
+
+with open('nlp/training.json', 'r') as fp:
     data = json.loads(fp.read())
     train = []
     for d in data:
         train.append((preprocess(d['text']), d['label']))
     cl = NaiveBayesClassifier(train)
+
 
 def handle_input(input_msg, action=None, state_params=None, ask_for=None):
     # print("INPUT: Action:", action, "Params:", state_params, "Asking for:", ask_for)
@@ -89,7 +92,7 @@ def handle_input(input_msg, action=None, state_params=None, ask_for=None):
                     break
     elif action == 'transfer':
         print("Transferring!")
-        if ask_for in ['origin','dest']:
+        if ask_for in ['origin', 'dest']:
             ext_dest = re.search(r"([+]1\d\d\d[-]?\d\d\d[-]?\d\d\d\d)", input_msg, re.IGNORECASE)
             if ext_dest:
                 state_params[ask_for] = ext_dest.group(0)
@@ -117,7 +120,7 @@ def handle_input(input_msg, action=None, state_params=None, ask_for=None):
                 else:
                     state_params['origin'] = local_dest.group(2)
                     state_params['dest'] = local_dest.group(4)
-            if ext_dest:        
+            if ext_dest:
                 state_params['origin'] = ext_origin.group(1)
                 state_params['dest'] = ext_dest.group(1)
     elif action == 'call':
@@ -157,6 +160,7 @@ def handle_input(input_msg, action=None, state_params=None, ask_for=None):
     # print("OUTPUT: Action:", action, "Params:", state_params)
     return action, state_params
 
+
 def gen_response(action, state_params):
     action_reqs = reqs[action]
     for param in action_reqs:
@@ -170,57 +174,57 @@ action = None
 state_params = None
 ask_for = None
 
-# while(True):
-#     print("Ready for input: ")
-#     action, state_params = handle_input(input(), action, state_params, ask_for)
-#     response, ask_for = gen_response(action, state_params)
-#     # print(action)
-#     if ask_for is None:
-#         if action == 'transactions':
-#             print("It looks like you're trying to view your recent transactions. Is this correct?")
-#         elif action == 'alerts':
-#             print("It looks like you're trying to view your alerts. Is this correct?")
-#         elif action == 'register':
-#             print("It sounds like you'd like to register for text alerts. Is this correct?")
-#         elif action == 'call':
-#             print("It sounds like you'd like to speak to customer support. Is this correct?")
-#         elif action == 'balance':
-#             print("It sounds like you're trying to check the balance of your ", 
-#             state_params['account'], " account. Is this correct?")
-#         elif action == 'transfer':
-#             print("It sounds like you're trying to transfer $", round(Decimal(state_params["amount"]), 2), " from ", 
-#             state_params["origin"], " to ", state_params["dest"], ", is that correct?")
-#         elif action == 'find':
-#             state_params['location'] = state_params['location'].replace(" Capital One", "")
-#             print("It sounds like you'd like to find ", state_params["location"], ", is that correct?")
-#         elif action == 'help':
-#             #SEND HELP MESSAGE
-#             action = None
-#             state_params = None
-#             print("Don’t know where to start? Here’s everything you can do with our service:
-#                     Check your account balance
-#                     View your recent transactions
-#                     View your alerts
-#                     Transfer money between your accounts
-#                     Transfer money to an external account via phone number
-#                     Find ATMs and Capital One banking locations nearby or in a location of your choice
-#                     Get connected with a customer service representative
-#                     Sign up for text alerts related to your account")
-#             continue
-#         confirm = handle_input(input(), "confirmation", state_params, None)
-#         if state_params["answer"] == "y":
-#             #send(action)
-#             #send(state_params)
-#             print("Action confirmed!")
-#             action = None
-#             state_params = None
-#         else:
-#             print("Sorry about that!")
-#             action = None
-#             state_params = None
+while (True):
+    print("Ready for input: ")
+    action, state_params = handle_input(input(), action, state_params, ask_for)
+    response, ask_for = gen_response(action, state_params)
+    # print(action)
+    if ask_for is None:
+        if action == 'transactions':
+            print("It looks like you're trying to view your recent transactions. Is this correct?")
+        elif action == 'alerts':
+            print("It looks like you're trying to view your alerts. Is this correct?")
+        elif action == 'register':
+            print("It sounds like you'd like to register for text alerts. Is this correct?")
+        elif action == 'call':
+            print("It sounds like you'd like to speak to customer support. Is this correct?")
+        elif action == 'balance':
+            print("It sounds like you're trying to check the balance of your ",
+                  state_params['account'], " account. Is this correct?")
+        elif action == 'transfer':
+            print("It sounds like you're trying to transfer $", round(Decimal(state_params["amount"]), 2), " from ",
+                  state_params["origin"], " to ", state_params["dest"], ", is that correct?")
+        elif action == 'find':
+            state_params['location'] = state_params['location'].replace(" Capital One", "")
+            print("It sounds like you'd like to find ", state_params["location"], ", is that correct?")
+        elif action == 'help':
+            # SEND HELP MESSAGE
+            action = None
+            state_params = None
+            print("""Don’t know where to start? Here’s everything you can do with our service:
+                    Check your account balance
+                    View your recent transactions
+                    View your alerts
+                    Transfer money between your accounts
+                    Transfer money to an external account via phone number
+                    Find ATMs and Capital One banking locations nearby or in a location of your choice
+                    Get connected with a customer service representative
+                    Sign up for text alerts related to your account""")
+            continue
+        confirm = handle_input(input(), "confirmation", state_params, None)
+        if state_params["answer"] == "y":
+            # send(action)
+            # send(state_params)
+            print("Action confirmed!")
+            action = None
+            state_params = None
+        else:
+            print("Sorry about that!")
+            action = None
+            state_params = None
 
-        
-#     else:
-#         # send 'need more details'
-#         # print("Secretly, I want to know the", ask_for)
-#         print(response, "\n\n")
+
+    else:
+        # send 'need more details'
+        # print("Secretly, I want to know the", ask_for)
+        print(response, "\n")
