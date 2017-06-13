@@ -4,16 +4,16 @@ import json
 from dotenv import load_dotenv
 import pyrebase
 
-config = {
-    "apiKey": "AIzaSyDJZDg3h4DOYc1sS4_zyr2u8QKkAgDnqkA",
-    "authDomain": "mhacks9-7440d.firebaseapp.com",
-    "databaseURL": "https://mhacks9-7440d.firebaseio.com",
-    "storageBucket": "mhacks9-7440d.appspot.com",
-    "messagingSenderId": "1538242320"
-}
-
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 load_dotenv(dotenv_path)
+
+config = {
+    "apiKey": os.environ.get('fbKey'),
+    "authDomain": os.environ.get('fbAuthDomain'),
+    "databaseURL": os.environ.get('fbDatabaseUrl'),
+    "storageBucket": os.environ.get('fbStorageBucket'),
+    "messagingSenderId": os.environ.get('fbMessagingSenderId')
+}
 
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
@@ -47,12 +47,19 @@ def createCustomer(number, payload=None):
     if customer["objectCreated"]:
         body['customer'] = customer["objectCreated"]
 
+        temp_url = os.environ.get('capitalUrl')+'customers/' + body['customer']['_id']+ '/accounts?key='+os.environ.get('apiKey')
         # Retrieve Accounts
-        accounts = requests.get(os.environ.get('capitalUrl')+'customers/' + body['customer']['_id']+ '/ accounts?key='+os.environ.get('apiKey')).json()
+        accounts = requests.get(temp_url).json()
         temp_acct = {
-            'Checking': {},
-            'Credit Card': {},
-            'Savings': {}
+            'Checking': {
+                'balance': 0
+            },
+            'Credit Card': {
+                'balance': 0
+            },
+            'Savings': {
+                'balance': 0
+            }
         }
 
         has_checking = False
@@ -111,12 +118,15 @@ def getUser(number):
 
 def updateDatabase(number, user):
     db.child("Customers").child(number).update(user, token)
+    if (user['accounts']):
+        db.child('Customers').child(number).child('accounts').update(user['accounts'], token)
+
 
 def updateField(number, key, value):
     user = getUser(number)
-    user[key] = value
-    updateDatabase(number, user)
-
+    if user:
+        user[key] = value
+        updateDatabase(number, user)
 
 def deleteAccount(number, id=""):
     requests.delete(os.environ.get('capitalUrl')+'accounts/'+id+'?key='+os.environ.get('apiKey'))

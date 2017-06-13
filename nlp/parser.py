@@ -1,8 +1,6 @@
-from textblob import TextBlob
 from textblob.classifiers import NaiveBayesClassifier
 import re
 from decimal import Decimal
-from twilio import twiml
 import json
 
 reqs = {
@@ -52,8 +50,7 @@ moneyregex = re.compile('|'.join([
 ]))
 
 def preprocess(message):
-    message = message.lower()
-    return message
+    return message.lower()
 
 def classify(message):
     message = preprocess(message)

@@ -2,7 +2,7 @@
 
 from textblob.classifiers import NaiveBayesClassifier
 import re
-from decimal import Decimal
+from datastore import *
 import json
 
 reqs = {
@@ -42,7 +42,7 @@ reqs = {
     }
 }
 
-accounts = ['checking', 'savings']
+accounts = ['Checking', 'Savings', 'Credit Card']
 facilities = ['atm', 'office', 'bank', 'location', 'store', 'capital one']
 
 moneyregex = re.compile('|'.join([
@@ -70,13 +70,30 @@ with open('nlp/training.json', 'r') as fp:
     cl = NaiveBayesClassifier(train)
 
 
-def handle_input(input_msg, action=None, state_params=None, ask_for=None):
-    print("INPUT: Action:", action, "Params:", state_params, "Asking for:", ask_for)
+def handle_input(number, input_msg):
+    user = getUser(number)
+    action = None if user.get('action') == 'None' else user.get('action')
+    state_params = None if user.get('state_params') == 'None' else user.get('state_params')
+    ask_for = None if user.get('ask_for') == 'None' else user.get('ask_for')
+    confirmed = user.get('confirmed')
+    print("INPUT: Action:", action, "Params:", state_params, "Asking for:", ask_for, "Confirmed:", confirmed)
     if action is None:
         action = classify(input_msg)
-    action_reqs = reqs[action]
+    # action_reqs = reqs[action]
     if state_params is None:
         state_params = dict()
+
+    if confirmed == True:
+        if input_msg == "yes" or input_msg == "y":
+            state_params["answer"] = "y"
+        elif input_msg == "no" or input_msg == "n":
+            state_params["answer"] = "n"
+        else:
+            print("This should never happen.")
+
+        print("OUTPUT: Action:", action, "Params:", state_params)
+        return action, state_params
+
     if action == 'balance':
         print("Checking Balance!")
         if ask_for in accounts:
@@ -88,7 +105,7 @@ def handle_input(input_msg, action=None, state_params=None, ask_for=None):
             for account in accounts:
                 if re.search(account, input_msg, re.IGNORECASE):
                     state_params['account'] = account
-                    print("found",account)
+                    # print("found",account)
                     break
     elif action == 'transfer':
         print("Transferring!")
@@ -154,74 +171,19 @@ def handle_input(input_msg, action=None, state_params=None, ask_for=None):
         if input_msg == "yes" or input_msg == "y":
             state_params["answer"] = "y"
         elif input_msg == "no" or input_msg == "n":
-            state_params["answer"] = "n"
+            state_params['answer'] = "n"
         else:
             print("This should never happen.")
+
     print("OUTPUT: Action:", action, "Params:", state_params)
     return action, state_params
 
 
 def gen_response(action, state_params):
-    action_reqs = reqs[action]
-    for param in action_reqs:
-        if param not in state_params and 'optional' not in action_reqs[param]:
-            return action_reqs[param]['missing_resp'], param
+    if ('answer' not in state_params):
+        action_reqs = reqs[action]
+        for param in action_reqs:
+            if param not in state_params and 'optional' not in action_reqs[param]:
+                return action_reqs[param]['missing_resp'], param
 
     return 'Thank you for using Capital One.', None
-
-
-action = None
-state_params = None
-ask_for = None
-
-if __name__ == '__main__':
-    while (True):
-        print("Ready for input: ")
-        action, state_params = handle_input(input(), action, state_params, ask_for)
-        response, ask_for = gen_response(action, state_params)
-        # print(action)
-        if ask_for is None:
-            if action == 'transactions':
-                print("It looks like you're trying to view your recent transactions. Is this correct?")
-            elif action == 'alerts':
-                print("It looks like you're trying to view your alerts. Is this correct?")
-            elif action == 'register':
-                print("It sounds like you'd like to register for text alerts. Is this correct?")
-            elif action == 'call':
-                print("It sounds like you'd like to speak to customer support. Is this correct?")
-            elif action == 'balance':
-                print("It sounds like you're trying to check the balance of your ",
-                      state_params['account'], " account. Is this correct?")
-            elif action == 'transfer':
-                print("It sounds like you're trying to transfer $", round(Decimal(state_params["amount"]), 2), " from ",
-                      state_params["origin"], " to ", state_params["dest"], ", is that correct?")
-            elif action == 'find':
-                state_params['location'] = state_params['location'].replace(" Capital One", "")
-                print("It sounds like you'd like to find ", state_params["location"], ", is that correct?")
-            elif action == 'help':
-                # SEND HELP MESSAGE
-                action = None
-                state_params = None
-                print("""Don’t know where to start? Here’s everything you can do with our service:
-                        Check your account balance
-                        View your recent transactions
-                        View your alerts
-                        Transfer money between your accounts
-                        Transfer money to an external account via phone number
-                        Find ATMs and Capital One banking locations nearby or in a location of your choice
-                        Get connected with a customer service representative
-                        Sign up for text alerts related to your account""")
-                continue
-            confirm = handle_input(input(), "confirmation", state_params, None)
-            if state_params["answer"] == "y":
-                print("Action confirmed!")
-                action = None
-                state_params = None
-            else:
-                print("Sorry about that!")
-                action = None
-                state_params = None
-
-
-        else:
-            print(response, "\n")

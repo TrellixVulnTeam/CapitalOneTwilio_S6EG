@@ -1,8 +1,6 @@
-import requests
 import datetime
-import json
 import redis
-from CapitalOneTwilio.datastore import *
+from datastore import *
 
 conn = redis.StrictRedis('localhost', charset='utf-8', decode_responses=True)
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
